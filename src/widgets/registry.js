@@ -16,10 +16,14 @@
 // Import widgets as they're implemented
 import ClockWidget from './Clock';
 import NotesWidget from './Notes';
+import BookmarksWidget from './Bookmarks';
+import WeatherWidget from './Weather';
 
 const widgets = [
   ClockWidget,
   NotesWidget,
+  BookmarksWidget,
+  WeatherWidget,
 ];
 
 // Create a map for easy lookup

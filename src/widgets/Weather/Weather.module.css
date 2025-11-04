@@ -1,0 +1,119 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--background, rgba(255, 255, 255, 0.05));
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+  font-size: 0.875rem;
+}
+
+.error {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.errorText {
+  font-size: 0.875rem;
+  color: rgba(239, 68, 68, 0.9);
+  margin: 0;
+}
+
+.errorHint {
+  font-size: 0.75rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+  margin: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  gap: 0.75rem;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin: -0.5rem;
+}
+
+.temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  font-variant-numeric: tabular-nums;
+}
+
+.location {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary, #ffffff);
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  text-transform: capitalize;
+}
+
+.details {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.detailLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+}
+
+.detailValue {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, #ffffff);
+}
