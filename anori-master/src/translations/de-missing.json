@@ -1,0 +1,21 @@
+{
+    "translation": {
+        "iconsPicker": {
+            "selectFamilyOrSearch": "Select specific icon family or try searching to see icon suggestions."
+        },
+        "settings": {
+            "general": {
+                "autoHideSidebar": "Automatically hide sidebar"
+            },
+            "theme": {
+                "blur": "Blur",
+                "colorAccent": "Accent",
+                "colorBackground": "Background",
+                "colorText": "Text"
+            },
+            "aboutHelp": {
+                "license": "License"
+            }
+        }
+    }
+}

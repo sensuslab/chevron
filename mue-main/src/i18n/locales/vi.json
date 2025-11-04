@@ -1,0 +1,10 @@
+{
+  "tabname": "Tab mới",
+  "widgets": {
+    "greeting": {
+      "afternoon": "Chào buổi chiều",
+      "evening": "Chào buổi tối",
+      "morning": "Chào buổi sáng"
+    }
+  }
+}

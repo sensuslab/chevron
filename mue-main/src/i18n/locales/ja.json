@@ -1,0 +1,13 @@
+{
+  "tabname": "新しいタブ",
+  "widgets": {
+    "greeting": {
+      "afternoon": "こんにちは",
+      "birthday": "誕生日おめでとう",
+      "christmas": "メリークリスマス",
+      "evening": "こんばんは",
+      "morning": "おはようございます",
+      "newyear": "あけましておめでとうございます"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+    "include": ["declarations.d.ts", "src/**/*", "rspack.config.ts", "build_helpers/**/*"],
+    "exclude": ["node_modules", "dist"],
+    "compilerOptions": {
+        "lib": ["es6", "es2023", "dom", "dom.iterable", "WebWorker"],
+        "baseUrl": ".",
+        "paths": {
+            "@anori/utils/*": ["./src/utils/*"],
+            "@anori/components/*": ["./src/components/*"],
+            "@anori/assets/*": ["./src/assets/*"],
+            "@anori/plugins/*": ["./src/plugins/*"],
+            "@anori/translations/*": ["./src/translations/*"]
+        },
+        "outDir": "dist",
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true,
+        "strictNullChecks": true,
+        "module": "esnext",
+        "target": "esnext",
+        "jsx": "preserve", // Will be compiled with Babel anyway
+        "allowJs": true,
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "isolatedModules": true,
+        "incremental": true
+    },
+
+    "ts-node": {
+        "compilerOptions": {
+            "module": "ESNext",
+            "moduleResolution": "bundler",
+            "allowImportingTsExtensions": true,
+            "noEmit": true
+        },
+        "files": true,
+        "include": ["declarations.d.ts"]
+    }
+}

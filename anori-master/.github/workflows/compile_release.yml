@@ -1,0 +1,30 @@
+name: 'Build extension and create release'
+
+permissions:
+    contents: write
+
+on:
+    workflow_dispatch:
+
+jobs:
+    compile:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: '.nvmrc'
+                  cache: 'pnpm'
+            - run: pnpm install --frozen-lockfile
+            - name: get-version
+              id: package-version
+              uses: martinbeentjes/npm-get-version-action@v1.3.1
+            - run: pnpm run production
+            - run: pnpm run production:ff
+            - name: Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: 'v${{steps.package-version.outputs.current-version}}'
+                  generate_release_notes: true
+                  files: |
+                      dist/*.zip

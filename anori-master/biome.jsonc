@@ -1,0 +1,86 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "vcs": {
+        "enabled": false,
+        "clientKind": "git",
+        "useIgnoreFile": false
+    },
+    "files": {
+        "ignoreUnknown": false,
+        "ignore": ["dist/", "**/*.js", "src/assets/"]
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+
+        "lineWidth": 120
+    },
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "complexity": {
+                "useDateNow": "error",
+                "noForEach": "off"
+            },
+            "correctness": {
+                "noConstantMathMinMaxClamp": "error",
+                "noInvalidNewBuiltin": "error",
+                "noUnusedImports": "error",
+                "noUnusedVariables": "warn",
+                "noChildrenProp": "off",
+                "useExhaustiveDependencies": {
+                    "level": "error",
+                    "options": {
+                        "hooks": [
+                            { "name": "useAtom", "stableResult": [1] },
+                            { "name": "useMirrorStateToRef", "stableResult": true },
+                            { "name": "useLazyRef", "stableResult": true },
+                            { "name": "useParentWidgetCardRef", "stableResult": true },
+                            { "name": "useForceRerender", "stableResult": true },
+                            { "name": "useMotionValue", "stableResult": true },
+                            { "name": "useTransform", "stableResult": true },
+                            { "name": "useAsyncEffect", "dependenciesIndex": 1 },
+                            { "name": "useAsyncLayoutEffect", "dependenciesIndex": 1 },
+                            { "name": "useOnChangeEffect", "dependenciesIndex": 1 },
+                            { "name": "useOnChangeLayoutEffect", "dependenciesIndex": 1 }
+                        ]
+                    }
+                }
+            },
+            "style": {
+                "noDefaultExport": "error",
+                "useThrowOnlyError": "warn",
+                "noUnusedTemplateLiteral": "off",
+                "noParameterAssign": "off"
+            },
+            "suspicious": {
+                "useErrorMessage": "error",
+                "noConfusingVoidType": "off",
+                "noArrayIndexKey": "off",
+                "noExplicitAny": "error",
+                "noThenProperty": "off"
+            },
+            "a11y": {
+                "useSemanticElements": "off",
+                // TODO: we should fix these issues and reenable rule at some point
+                "noLabelWithoutControl": "off"
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double",
+            "quoteProperties": "preserve",
+            "semicolons": "always"
+        }
+    },
+    "json": {
+        "formatter": {
+            "indentWidth": 4
+        }
+    }
+}
