@@ -5,6 +5,7 @@ import { CssVarsProvider, Card, Box, Button } from '@mui/joy'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import Header from './Header/Header'
 import Category from './Category/Category'
+import ModeSelector from './ModeSelector/ModeSelector'
 import settings from '../../../settings/settings'
 
 function Settings({ onClose }) {
@@ -62,6 +63,7 @@ function Settings({ onClose }) {
             }
           }}>
             <Header title='Settings' isPlaceholder/>
+            <ModeSelector />
             {
               Object.entries(settings.template).map(([category]) => {
                 if (hiddenSettings.includes(category))

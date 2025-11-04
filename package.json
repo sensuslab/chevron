@@ -16,6 +16,9 @@
     "register_mac": "node backend/register.cjs mac"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/joy": "^5.0.0-alpha.64",
@@ -27,6 +30,7 @@
     "colorjs.io": "^0.4.3",
     "dateformat": "^5.0.3",
     "framer-motion": "^7.8.0",
+    "jotai": "^2.15.1",
     "minisearch": "^6.0.1",
     "react": "^18.2.0",
     "react-colorful": "^5.6.1",
