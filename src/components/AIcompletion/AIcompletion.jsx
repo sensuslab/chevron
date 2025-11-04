@@ -8,8 +8,8 @@ import classes from './AIcompletion.module.css'
 
 function getAiConfigMessage(language) {
   let config = {
-    role: 'system', 
-    content: 'You are ChatGPT, a large language model trained by OpenAI. \nKnowledge cutoff: 2021-09'
+    role: 'system',
+    content: 'You are a helpful AI assistant powered by GPT-5.'
   }
 
   // specify current date and time
@@ -18,7 +18,7 @@ function getAiConfigMessage(language) {
   // specify language
   if (language)
     config.content += ' \nAnswer in ' + language + ' language.'
- 
+
   return config
 }
 
