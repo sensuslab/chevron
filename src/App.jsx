@@ -6,6 +6,7 @@ import ActiveElements from './components/ActiveElements/ActiveElements'
 import QueryField from './components/QueryField/QueryField'
 import Settings from './components/Settings/Settings'
 import LayoutButton from './components/LayoutButton/LayoutButton'
+import Wallpaper from './components/Wallpaper/Wallpaper'
 import { BsGearFill, BsChevronRight } from 'react-icons/bs'
 import { RiMenu5Fill } from 'react-icons/ri'
 import { allowedModes } from './rules'
@@ -114,20 +115,21 @@ function App() {
 
   return (
     <div className='app'>
+      <Wallpaper />
       {
         !isMobile || ignoreMobile
           ? <AnimatePresence>
               {
                 showSettings
                   ? <Settings key='settings' onClose={() => {
-                    setShowSettings(false) 
+                    setShowSettings(false)
                     resetStore()}}/>
-                  : 
-                  <motion.div 
+                  :
+                  <motion.div
                     key={timestamp}
-                    className={classes['container']} 
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }} 
+                    className={classes['container']}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     exit={redirected || { opacity: 0 }}>
                       <ActiveElements/>
                       <QueryField/>

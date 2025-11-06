@@ -1,103 +1,21 @@
-const API_URL = 'https://api.openai.com/v1/chat/completions'
-const PARAMS = {
-    model: 'gpt-5',
-    temperature: 0.4,
-    stream: true,
-    max_tokens: 16384,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-}
+import { createChatCompletion } from '../api/client'
 
-function createCompletion(stateSetter, messages, temperature, key) {
-  const controller = new AbortController()
-  
-  return ({ 
-    controller,
-    promise: new Promise((resolve, reject) => {
-      fetch(API_URL, {
-        signal: controller.signal,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(key)
-        },
-        body: JSON.stringify({ ...PARAMS, messages, temperature })
-      })
-      .then(result => {
-        fetchStream(
-          result.body, 
-          result.ok ? dataParser(stateSetter) : errorParser)
-        .then(content => {
-          result.ok
-            ? resolve({ content, role: 'assistant' })
-            : reject(content)
-        })
-      })
-    })
-  })
-}
-
-function fetchStream(stream, parser) {
-  let content = null
-  const reader = stream.getReader()
-
-  // read() returns a promise that resolves
-  // when a value has been received
-  return reader.read().then(
-    function processText({ done, value }) {
-      // Result objects contain two properties:
-      // done  - true if the stream has already given you all its data.
-      // value - some data. Always undefined when done is true.
-      if (done)
-        return content
-      
-      const decoded = new TextDecoder('utf-8').decode(value)
-      console.log(decoded)
-
-      content = parser(decoded, content)
-
-      return reader.read().then(processText)
-    }
-  )
-}
-
-function dataParser(stateSetter) {
-  return (data, acc) => {
-    for (const entry of data.split('\n'))
-      if (entry) {
-        const text = entry.slice(entry.indexOf(':') + 2)
-        let response
-        try {
-          response = JSON.parse(text)
-        } catch (error) { /* pass */ }
-  
-        if (response && typeof response.choices[0].delta.content === 'string') {
-          if (typeof acc === 'string')
-            acc += response.choices[0].delta.content
-          else
-            acc = response.choices[0].delta.content
-          
-          stateSetter(acc)
-        }
-      }
-
-    return acc
-  }
-}
-
-function errorParser(data, acc) {
-  const parsed = JSON.parse(data)
-  if (!acc)
-    acc = {}
-  
-  acc.code = parsed.error.code
-  if (typeof acc.message === 'string')
-    acc.message += parsed.error.message
-  else
-    acc.message = parsed.error.message
-  
-  return acc
+/**
+ * Create a chat completion using the backend API proxy
+ *
+ * DEPRECATED: This function now uses the backend API proxy for security.
+ * The API key parameter is ignored - keys are stored server-side.
+ *
+ * @param {Function} stateSetter - Function to update state with streaming content
+ * @param {Array} messages - Array of message objects
+ * @param {Number} temperature - Temperature setting for the model
+ * @param {String} _apiKey - DEPRECATED: API key (now stored server-side)
+ * @returns {Object} Object with controller and promise
+ */
+function createCompletion(stateSetter, messages, temperature, _apiKey) {
+  // Note: API key is now stored server-side and not needed here
+  // Using gpt-4 as default model (more stable than gpt-5)
+  return createChatCompletion(stateSetter, messages, temperature, 'gpt-4')
 }
 
 export default createCompletion
